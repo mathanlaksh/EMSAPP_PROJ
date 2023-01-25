@@ -1,0 +1,62 @@
+
+<app-header></app-header>
+<div class="container-lg">
+    <div class="card">
+     <div class="card-header text-bold">    
+      <strong class="p-10 fs-4 fw-bold fst-italic px-3">Listing Leave Record</strong>   
+       <button type="button" class="btn btn-primary text-white" (click)="addLeaveRecord()"
+        id="btnAddModal" *ngIf="session.userRole=='Admin'">
+        <span><i class="fa fa-plus"></i></span> Add Leave Record 
+       </button>
+       <form class="me-2" style="float:right;">
+         <input type="search" class="form-control me-2" placeholder="&#61442;  search by all category" 
+         name="search" [(ngModel)] ="enteredSearchValue"
+         autocomplete = "off" [ngModelOptions]="{standalone: true }">
+        
+       </form>
+     </div>   
+     <div class="card-body">
+      <div class="row"><div class="col-12" *ngIf="leavePrivileges.length > 0">
+        <table class="table table-condensed">
+          <thead>
+            <tr class="bg-primary text-white">
+              <th>Sr.No</th>
+              <th>Employee Id</th>
+              <th>Type</th>
+              <th>Assigned Leaves</th>
+              <th colspan="2" *ngIf="session.userRole=='Admin'">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor=" let i= index; let lvp of leavePrivileges 
+            | filter: enteredSearchValue">
+             <!-- | paginate
+            :{
+              currentPage:pagination,
+              totalItems:allUsers,
+              itemsPerPage:5
+            } 
+            | filterEmployee:FilterText"> -->
+              <td>{{i+1}}</td>               
+              <td>{{lvp.empId}}</td>
+              <td>{{lvp.leaveType}}</td>
+              <td>{{lvp.no_of_lv_assigned}}{{' Days'}}</td>
+              <td>
+                <div class="appr-inline">
+                  <p *ngFor="let item of lvp.lv_approver; let isLast=last">
+                    {{item.userName}} {{isLast ? '': ','}}</p> 
+                </div>
+              </td>
+              <td *ngIf="session.userRole=='Admin'">
+              <button class="btn btn-outline-warning btn-sm" type="button"><i class="fa fa-edit" aria-hidden="true"></i>&nbsp;Edit</button>&nbsp;
+              <button class="btn btn-outline-danger btn-sm" type="button"> <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>         
+      </div>
+      <div class="col-md-6 col-12" *ngIf="leavePrivileges.length == 0"><p class="fs-10 fw-bold fst-italic p-3">
+        No user Privilege data Found</p></div></div>
+       
+</div>
+</div>

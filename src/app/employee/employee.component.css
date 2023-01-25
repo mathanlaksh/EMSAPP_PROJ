@@ -1,0 +1,8 @@
+.modal-dialog{
+    margin-top:100px;
+}
+
+#btnAddModal{
+    float:right;
+    position:relative
+}

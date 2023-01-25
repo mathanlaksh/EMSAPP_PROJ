@@ -1,0 +1,99 @@
+<main id="signUp">
+<div class="container">
+  <div class="card bg-light" id="divCard">
+    <article class="card-body">
+      <h4 class="card-title mt-3 text-center">Create Account</h4>
+      <form name="signUpForm" #fo="ngForm" (ngSubmit)="fo.form.valid && addUser()" novalidate>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-user"></i> </span>
+           </div>
+           <input type="text" name="txtUName" placeholder="user name" class="form-control" id="txtUName"
+            [(ngModel)] = "userData.userName" [ngModelOptions]="{standalone: true }" #uName="ngModel" 
+             [ngClass] = "{'is-invalid':fo.submitted && uName.invalid,'is-valid':fo.submitted && uName.valid}" 
+             required>
+           <div class="invalid-feedback">
+            <div *ngIf="uName.errors?.['required']">User name is requird</div>
+           </div>
+           </div> <!-- form-group// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-envelope"></i> </span>
+         </div>
+         <input type="text" name="txtEmail" placeholder="email address" class="form-control" id="txtEmail"
+          [(ngModel)] = "userData.emailId" [ngModelOptions]="{standalone: true }"
+           #eMail="ngModel"  [ngClass] = "{'is-invalid':fo.submitted && eMail.invalid,'is-valid':fo.submitted && eMail.valid}"
+           email required>
+         <div class="invalid-feedback">
+          <div *ngIf="eMail.errors?.['required']">email is requird</div>
+          <div *ngIf="eMail.errors?.['email']">email can be valid email address</div>
+         </div>
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input type="password" name="txtPwd" placeholder="password"  class="form-control" id="txtPassword" [(ngModel)] = "userData.password" [ngModelOptions]="{standalone: true }" 
+         #password="ngModel" [ngClass]="{'is-invalid':fo.submitted && password.invalid, 'is-valid' : fo.submitted && password.valid}" 
+        minlength="6" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/" required>
+        <!--  pattern="(?=*\d)(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" -->
+        <div class="invalid-feedback">
+        <div *ngIf="password.errors?.['required']">Password is required</div>
+          <div *ngIf="password.errors?.['minlength']"> Password should be atleast 6 characters!</div>
+          <!-- <div *ngIf="password.errors?.['pattern']"> password should be atleast one uppercase ,one lowercase , one numeric and one special character </div> -->
+          <div ng-message="pattern">Password should be atleast 6 characters long
+            and should contain one number,one character and one special
+            character
+          </div>
+        </div>
+      
+      </div> <!-- form-group// -->
+        
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+            <input class="form-control" placeholder="Repeat password" (change)="onPasswordChange()" 
+            [(ngModel)] ="confirmPwd" [ngModelOptions]="{standalone: true }" type="password"
+             #conPwd="ngModel" [ngClass]="{'is-invalid': fo.submitted && conPwd.invalid ,'is-valid':fo.submitted && conPwd.valid}"
+           minlength="6" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/" required>
+            <!--  pattern="(?=*\d)(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  -->
+            <div class="invalid-feedback">
+              <div *ngIf="conPwd.errors?.['required']">Confirm Password is required</div>    
+              <div *ngIf="password.errors?.['minlength']"> Password should be atleast 6 characters!</div>
+              <div ng-message="pattern">Password should be atleast 6 characters long
+                and should contain one number,one character and one special
+                character
+              </div>
+            </div>
+          </div> <!-- form-group// -->      
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <select name="userRole" class="custom-select mb-3"  [(ngModel)] ="userData.userRole" #uRole="ngModel" [ngClass]="{'is-invalid': fo.submitted && uRole.invalid ,'is-valid':fo.submitted && uRole.valid}" required>
+          <option value="">Choose Role</option>
+          <option value="Admin">ADMIN</option>
+          <option value="Hr">HR</option>
+          <option value="Employee">EMPLOYEE</option>
+        </select>
+        <div class="invalid-feedback">
+          <div>User Role is requird</div>
+           </div>
+      </div> <!-- form-group end.// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input type="checkbox" name="isActive" class="form-check-input" id="isActive" [(ngModel)] ="userData.isActive" [ngModelOptions]="{standalone: true }">
+        <label class="form-check-label" >&nbsp;&nbsp;User want to be Active ?</label>
+      </div> <!-- form-group// -->
+      <div class="form-group my-2 text-center">
+         <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+        </div> <!-- form-group// -->      
+        <p class="text-center">Have an account? <a [routerLink]="['/login']">Log In</a> </p>                                                                 
+    </form>
+    </article>
+  </div>
+</div>
+</main>

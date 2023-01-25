@@ -1,0 +1,87 @@
+<app-header></app-header>
+<!-- <app-leave-details (leaveUpdateRequest)="newMessage($event)"></app-leave-details> -->
+<div class="card shadow mb-5 bg-body rounded">
+  <div class="card-header bg-primary text-white">
+    Apply Leave 
+  </div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+        <div class="form-group col-md-4">
+          <label>From Date</label>
+          <input class="form-control" type="date" (change)="getFromDate($event)" formControlName="fromDate"
+            [ngClass]="{ 'is-invalid': submitted && f['fromDate'].errors }" />
+          <div *ngIf="submitted && f['fromDate'].errors" class="invalid-feedback">
+            <div *ngIf="f['fromDate'].errors['required']">date is required</div>
+            <div *ngIf="f['fromDate'].errors['pattern']">Date must be a valid date in the format YYYY-MM-DD</div>
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label>To Date</label>
+          <input class="form-control" type="date" (change)="getToDate($event)" formControlName="toDate"
+            [ngClass]="{ 'is-invalid': submitted && f['toDate'].errors }" />
+         
+            <div *ngIf="submitted && f['toDate'].errors" class="invalid-feedback">
+            <div *ngIf="f['toDate'].errors['required']">date is required</div>
+            <div *ngIf="f['toDate'].errors['pattern']">Date  must be a valid date in the format YYYY-MM-DD</div>
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Nature of Leave</label>
+          <select class="custom-select mb-3"  [disabled]="leaveApply.leaveTypeId == 0" (ngModelChange)="changeCategory($event)" 
+          formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['category'].errors }">
+          <option value="-1">Choose Leave Category</option>
+          <option *ngFor="let type of leaveTypes" [ngValue]="type.leaveTypeId">
+            {{ type.leaveTypeId + ' - '}}{{ type.leaveTypeName }}
+          </option>
+        </select>
+          <div *ngIf="submitted && f['category'].errors" class="invalid-feedback">
+            <div *ngIf="f['category'].errors['required']">category is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="form-group col-md-2">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="isHalfDaycbx" formControlName="isHalfDay">
+            <label class="form-check-label" for="isHalfDaycbx">Is Half Day</label>
+          </div>
+        </div>
+        <div class="form-group col-md-10">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="IsHalfDay" id="isAmRadio" formControlName="isHalfDayValue" value="AM">
+            <label class="form-check-label" for="isAmRadio">
+              AM
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="IsHalfDay" id="isPmRadio" formControlName="isHalfDayValue" value="PM">
+            <label class="form-check-label" for="isPmRadio">
+              PM
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="form-group col-md-12">
+          <textarea formControlName="remarks" class="form-control" name="remarks"
+           cols="100" rows="5" placeholder="enter remarks" required 
+          [ngClass]="{ 'is-invalid': submitted && f['remarks'].errors }"></textarea>
+               
+          <div *ngIf="submitted && f['remarks'].errors" class="invalid-feedback">
+            <div *ngIf="f['remarks'].errors['required']">remarks is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Register</button>&nbsp;
+          <button type="button" (click)="onReset()" class="btn btn-warning float-right">
+            Reset
+          </button>&nbsp;
+          <button type="button" class="btn btn-secondary" (click)="onBacktoPage()">Back to Leave List</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

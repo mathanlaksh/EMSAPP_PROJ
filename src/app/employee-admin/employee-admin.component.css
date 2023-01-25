@@ -1,0 +1,58 @@
+.oceanBlue{
+    color: rgb(50, 163, 255)
+}
+
+.dropzone {
+    height: 150px;
+    min-width:120px;
+    background-color: #eee;
+    border: dashed 1px #aaa;
+    border-radius:10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-wrapper{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-dialog{
+    margin-top:50px;
+}
+
+#btnAddModal{
+    float:right;
+    position:relative
+}
+
+
+.modal .modal-content {
+    /*padding: 20px 20px 20px 20px;*/
+     -webkit-animation-name: modal-animation;
+     -webkit-animation-duration: 0.5s;
+     animation-name: modal-animation;
+     animation-duration: 0.5s;
+ }
+   
+ @-webkit-keyframes modal-animation {
+     from {
+         top: -100px;
+         opacity: 0;
+     }
+     to {
+         top: 0px;
+         opacity: 1;
+     }
+ }
+   
+ @keyframes modal-animation {
+     from {
+         top: -300px;
+         opacity: 0;
+     }
+     to {
+         top: 0px;
+         opacity: 1;
+     }
+ }

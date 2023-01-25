@@ -1,0 +1,66 @@
+<div class="container">
+    <br>
+    <hr>
+  
+    <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Login Account</h4>
+      <form name="loginForm" #fo="ngForm" (ngSubmit)="fo.form.valid && onLogin()" novalidate>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-user"></i> </span>
+           </div>
+           <input type="text" name="txtUName" placeholder="email id" class="form-control" id="txtUName"
+            [(ngModel)] = "loginObj.emailId" [ngModelOptions]="{standalone: true }" #uName="ngModel" 
+             [ngClass] = "{'is-invalid':fo.submitted && uName.invalid,'is-valid':fo.submitted && uName.valid}" 
+            email required>
+           <div class="invalid-feedback">
+            <div *ngIf="uName.errors?.['required']">User name is requird</div>
+            <div *ngIf="uName.errors?.['email']">User name can be valid email address</div>
+           </div>
+           </div> <!-- form-group// -->
+         
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <input type="password" name="txtPwd" placeholder="password"  class="form-control" id="txtPassword" [(ngModel)] = "loginObj.password" [ngModelOptions]="{standalone: true }" 
+           #password="ngModel" [ngClass]="{'is-invalid':fo.submitted && password.invalid, 'is-valid' : fo.submitted && password.valid}" 
+          minlength="6" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/" required>
+          <!--  pattern="(?=*\d)(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" -->
+          <div class="invalid-feedback">
+          <div *ngIf="password.errors?.['required']">Password is required</div>
+            <div *ngIf="password.errors?.['minlength']"> Password should be atleast 6 characters!</div>
+            <!-- <div *ngIf="password.errors?.['pattern']"> password should be atleast one uppercase ,one lowercase , one numeric and one special character </div> -->
+            <div ng-message="pattern">Password should be atleast 6 characters long
+              and should contain one number,one character and one special
+              character
+            </div>
+          </div>
+        </div> <!-- form-group// -->              
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <select name="userRole" class="custom-select mb-3"  [(ngModel)] ="loginObj.userRole" #uRole="ngModel" [ngClass]="{'is-invalid': fo.submitted && uRole.invalid ,'is-valid':fo.submitted && uRole.valid}" required>
+            <option value="">Choose Role</option>
+            <option value="Admin">Admin</option>
+            <option value="Hr">HR</option>
+            <option value="Employee">Employee</option>
+          </select>
+          <div class="invalid-feedback">
+            <div>User Role is requird</div>
+             </div> 
+             </div>
+             <div class="form-group my-2 text-center">
+              <button type="submit" class="btn btn-primary  btn-block"> Login  </button> &nbsp;&nbsp;
+             
+              <button type="button" class="btn btn-secondary btn-block" (click)="onReset()"> Reset </button> &nbsp; &nbsp;
+              <button type="button" class="btn btn-warning btn-block" (click)="onBack()"> Back  </button>
+             </div> <!-- form-group// --> 
+      </form>   
+    </article>
+    </div> <!-- card.// -->
+    </div> 
+    <!--container end.//-->
+    

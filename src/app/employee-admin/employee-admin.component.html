@@ -1,0 +1,395 @@
+<app-header (sideNavToggled)="sideNavStatus = $event;">
+
+</app-header>
+<!-- <app-side-nav [sideNavStatus]="sideNavStatus" 
+  [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-side-nav> -->
+
+<div class="container">
+  <main>
+    <div class="row card-group">
+      <div class="col-md-3 col-sm-6 col-4 mt-2" *ngFor="let emp of employees">
+        <div class="card ms-1" style="width: 18rem;" >
+          <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModal"
+              id="btnAddModal" (click) ="onShowAddModal()"><i class="fa fa-plus-circle"
+              aria-hidden="true"></i>&nbsp;Add</button>
+          <img src="./assets/photo2.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title fs-14 fw-bold fst-italic">{{'Mr. ' +emp.first_Name + ' '+ emp.last_Name}}</h5>
+            <p class="card-text fs-14 fw-bold fst-italic">Designation: <span class="oceanBlue">{{emp.designation}}</span></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item fs-14 fw-bold fst-italic">DOB : <span class="oceanBlue">{{emp.dOB}}</span> </li>
+            <li class="list-group-item fs-14 fw-bold fst-italic">Gender: <span class="oceanBlue">{{emp.gender}}</span></li>
+            <li class="list-group-item fs-14 fw-bold fst-italic"> Bio-Brief: <span class="oceanBlue">{{emp.bio_Brief}}</span></li>
+            <li class="list-group-item fs-14 fw-bold fst-italic"> RollNo: <span class="oceanBlue">{{emp.emp_RollNo}}</span></li>
+            <li class="list-group-item fs-14 fw-bold fst-italic">Phone : <span class="oceanBlue"> {{emp.phone}}</span></li>
+          </ul>
+          <div class="card-body">            
+            <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal"
+              data-target="#viewRequestModal" (click)="onViewRequest(emp)"> <i class="fa fa-eye"
+                aria-hidden="true"></i>&nbsp;View</button>&nbsp;
+            <button class="btn btn-outline-warning btn-sm" type="button" data-toggle="modal" data-target="#exampleModal"
+              (click)="onEditRequest(emp)"><i class="fa fa-edit" aria-hidden="true"></i>&nbsp;Edit</button>&nbsp;
+            <button class="btn btn-outline-danger btn-sm" type="button" data-toggle="modal"
+              data-target="#deleteRequestModal" (click)="onDeleteRequest(emp)"> <i class="fa fa-trash"
+                aria-hidden="true"></i>&nbsp;Delete</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" *ngIf="employees.length == 0">
+        <div class="card-title">
+            <div class="card-text">No Employees Found</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!--View Employee Data Modal-->
+<div class="modal fade" [class.show]="showViewModal" id="viewRequestModal" tabindex="-1" role="dialog"
+  aria-labelledby="viewRequestModalLabel" aria-hidden="true" [ngStyle]="{'display':displayViewModal}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="viewRequestModalLabel">View Employee Details </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModalAll()">
+          <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row ">
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Full Name</label>
+          </div>
+
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Gender</label>
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.first_Name + ' ' + employeeData.last_Name }}</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.gender}}</label>
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">DOB</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Roll No</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.dOB | date: 'dd/MM/yyyy'}}</label>
+          </div>
+
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.emp_RollNo}}</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Designation</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Skill</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label class="col-form-label">{{employeeData.designation}}</label>
+
+          </div>
+
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.skill}}</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Certification </label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Tot. Experience(in Yrs)</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.certification}}</label>
+
+          </div>
+
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.tot_Exp_In_Yrs}}</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Bio Brief </label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Temporary Address</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.bio_Brief}}</label>
+
+          </div>
+
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.temp_Addr}}</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Permanant Address</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Email</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.perm_Addr}}</label>
+
+          </div>
+
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.email}}</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Phone</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Salary</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.phone}}</label>
+
+          </div>
+
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.salary}}</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Increment (%)</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label fs-14 fw-bold fst-italic">Increment Amount</label>
+
+          </div>
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.inc_Percent}}</label>
+
+          </div>
+
+          <div class="col-md-6 col-sm-3">
+            <label for="" class="col-form-label">{{employeeData.inc_Amt}}</label>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onCloseModalAll()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--View Employee Data Modal-->
+
+<div class="modal fade" [class.show]="showAddEditModal" id="addEditRequestModal" data-easein="perspectiveUpIn" tabindex="-1" role="dialog"
+  aria-labelledby="addEditRequestModalLabel" aria-hidden="true" [ngStyle]="{'display':displayAddEditModal}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <form #fo="ngForm" name="registerForm" novalidate>
+        <div class="modal-header bg-primary col-12 text-white">
+          <h5 class="modal-title col-7 fs-10 fw-bold fst-italic" id="addEditRequestModalLabel" *ngIf="isAddModalBtn">ADD
+            EMPLOYEE DETAILS</h5>
+          <h5 class="modal-title col-7 fs-10 fw-bold fst-italic" id="addEditRequestModalLabel" *ngIf="isEditModalBtn">
+            EDIT EMPLOYEE DETAILS</h5>
+          <div class="form-group col-3" style="float:right">
+            <label for="empRollNo" class="col-form-label fs-10 fw-bold fst-italic1v8">Roll No:</label>&nbsp;&nbsp;
+            <label class="col-form-label fs-10 fw-bold fst-italic" width="200px;">{{tempRollNo == '' ?
+              employeeData.emp_RollNo : tempRollNo}}</label>
+          </div>
+          <button type="button" class="close" (click)="onCloseModalAll()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="txtFName" class="col-form-label">First Name:</label>
+                <input type="text" name="txtFName" class="form-control" id="txtFName"
+                  [(ngModel)]="employeeData.first_Name" [ngModelOptions]="{standalone: true }" #fName="ngModel"
+                  [ngClass]="{'is-invalid':fo.submitted && fName.invalid,'is-valid':fo.submitted && fName.valid && isBtnSubmit}"
+                  required>
+                <div class="invalid-feedback">
+                  <div *ngIf="fName.errors?.['required']">User name is requird</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="txtLName" class="col-form-label">Last Name:</label>
+                <input type="text" name="txtLName" class="form-control" id="txtLName"
+                  [(ngModel)]="employeeData.last_Name" [ngModelOptions]="{standalone: true }" #lName="ngModel"
+                  [ngClass]="{'is-invalid':fo.submitted && fName.invalid,'is-valid':fo.submitted && fName.valid && isBtnSubmit}"
+                  required>
+                <div class="invalid-feedback">
+                  <div *ngIf="lName.errors?.['required']">Last name is requird</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="dropzone">
+                <div class="text-wrapper">
+                  <div class="text-center">
+                  </div>
+                  <img alt="">
+                </div>
+              </div>
+              <input type="file" class="file-upload" (change)="onFileSelected($event)" value="upload">
+              <button class="btn btn-upload" type="button" (click)="onUpload()">Upload</button>
+            </div>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="ddlGender" class="col-form-label">Gender:</label>
+
+            <select name="genderName" type="text" class="custom-select mb-3" [(ngModel)]="employeeData.gender"
+              #gender="ngModel" [ngModelOptions]="{standalone: true }"
+              [ngClass]="{'is-invalid': fo.submitted && gender.invalid ,'is-valid':fo.submitted && gender.valid && isBtnSubmit}"
+              required>
+              <option value="">Choose Gender</option>
+              <option value="Male">Male</option>
+              <option value="FeMale">Female</option>
+              <option value="Others">Others</option>
+            </select>
+            <div class="invalid-feedback">
+              <div>please select any one gender</div>
+            </div>
+          </div>
+          <div class=" form-group input-group col-md-4">
+            <input type="date" #dobF="ngModel" class="form-control" id="dob" [(ngModel)]="employeeData.dOB"
+              placeholder="mm-dd-yyyy" name="dp" [ngModelOptions]="{standalone: true }" required>
+            <div class="input-group-append">
+
+            </div>
+          </div>
+
+          <!-- pattern=" ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|[12][0-9]|3[01])$
+                  ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$" -->
+
+          <!-- <div class="form-group">
+              <label for="txtDob" class="col-form-label">DOB:</label>
+              <input type="text" name="dOb"  class="form-control" id="txtDob"  [(ngModel)] = "employeeData.dOB" 
+               pattern="^\d{4}\-(0[1-9]|[12][0-9]|3[01])\-(0[1-9]|1[012])\-(0[1-9]|1[012])$" #dob="ngModel" 
+               [ngClass]="{'is-invalid': fo.submitted && dob.invalid ,'is-valid':fo.submitted && dob.valid}"
+                [ngModelOptions]="{standalone: true}">
+               
+           <div class="invalid-feedback">
+            <div *ngIf="dob.errors?.['required']">DOB is requird</div>
+            <div *ngIf="dob.errors?.['pattern']">DOB must be in YYYY-MM-DD FORMAT</div>
+          </div>
+          </div> -->
+          <div class="form-group">
+            <label for="txtDesig" class="col-form-label">Designation:</label>
+            <input type="text" name="txtDesig" class="form-control" id="txtDesig" [(ngModel)]="employeeData.designation"
+              [ngModelOptions]="{standalone: true}" required>
+            <div class="invalid-feedback">
+              <div>Designation is required. If any Fresher, please mention same</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="txtSkill" class="col-form-label">Skill:</label>
+            <input type="text" class="form-control" id="txtSkill" [(ngModel)]="employeeData.skill"
+              [ngModelOptions]="{standalone: true}" name="skill">
+          </div>
+          <div class="form-group">
+            <label for="txtcertification" class="col-form-label">certification:</label>
+            <input type="text" class="form-control" id="txtcertification" [(ngModel)]="employeeData.certification"
+              [ngModelOptions]="{standalone: true}" name="certification">
+          </div>
+          <div class="form-group">
+            <label for="txtTotExp" class="col-form-label">Tot.Exp.(Yrs):</label>
+            <input type="number" class="form-control" id="txtTotExp" [(ngModel)]="employeeData.tot_Exp_In_Yrs"
+              [ngModelOptions]="{standalone: true}" name="tot_Exp_In_Yrs">
+          </div>
+          <div class="form-group">
+            <label for="txtBioBrief" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="txtBioBrief" [(ngModel)]="employeeData.bio_Brief"
+              [ngModelOptions]="{standalone: true}" name="bio_Brief"></textarea>
+            <div class="invalid-feedback">
+              <div>write about yourself in few sentences</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="txtTemp_Addr" class="col-form-label">Current Address:</label>
+            <textarea class="form-control" id="txtTemp_Addr" [(ngModel)]="employeeData.temp_Addr"
+              [ngModelOptions]="{standalone: true}" name="temp_Addr"></textarea>
+          </div>
+          <div class="form-group mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="isSameAddr" (change)="onCheckboxChange($event)">
+            <label class="form-check-label" for="isSameAddr">Same as Current Address</label>
+          </div>
+          <div class="form-group">
+            <label for="txtPerm_Addr" class="col-form-label">Permanant Address:</label>
+            <textarea class="form-control" id="txtPerm_Addr" [(ngModel)]="employeeData.perm_Addr"
+              [ngModelOptions]="{standalone: true}" name="perm_Addr"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="txtEmail" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="txtEmail" [(ngModel)]="employeeData.email"
+              [ngModelOptions]="{standalone: true}" name="email" #eMail="ngModel"
+              [ngClass]="{'is-invalid':fo.submitted && eMail.invalid,'is-valid':fo.submitted && eMail.valid && isBtnSubmit}"
+              email required>
+            <div class="invalid-feedback">
+              <div *ngIf="eMail.errors?.['required']">email is requird</div>
+              <div *ngIf="eMail.errors?.['email']">email can be valid email address</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="txtPhone" class="col-form-label">Phone:</label>
+            <input type="text" class="form-control" id="txtPhone" [(ngModel)]="employeeData.phone"
+              [ngModelOptions]="{standalone: true}" name="phone" #phone="ngModel"
+              [ngClass]="{'is-invalid': fo.submitted && phone.invalid ,'is-valid':fo.submitted && phone.valid && isBtnSubmit}"
+              [ngModelOptions]="{standalone: true}" required pattern="^[0-9]*$" minlength="10" maxlength="10">
+            <div class="invalid-feedback">
+              <div *ngIf="phone.errors?.['required']">Phone No is requird</div>
+              <div *ngIf="phone.errors?.['pattern']">numeric only accepted</div>
+              <div *ngIf="phone.errors?.['minlength']">phone no must be in minimum of 10 digits</div>
+              <div *ngIf="phone.errors?.['maxlength']">phone no must be in maximum of 10 digits</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="txtSalary" class="col-form-label">Salary:</label>
+            <input type="number" class="form-control" id="txtSalary" [(ngModel)]="employeeData.salary"
+              [ngModelOptions]="{standalone: true}" name="salary">
+          </div>
+          <div class="form-group">
+            <label for="txtInc_Percent" class="col-form-label">Inc_Percent:</label>
+            <input type="number" class="form-control" id="txtInc_Percent" (change)="onchangeCalcInc()"
+              [(ngModel)]="employeeData.inc_Percent" [ngModelOptions]="{standalone: true}" name="inc_Percent">
+          </div>
+          <div class="form-group">
+            <label for="txtInc_Amt" class="col-form-label">Inc.Amount:</label>
+            <input type="number" class="form-control" id="txtInc_Amt" [(ngModel)]="employeeData.inc_Amt"
+              [ngModelOptions]="{standalone: true}" name="inc_Amt" disabled>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            (click)="onCloseModalAll()">Close</button>
+          <button type="submit" class="btn btn-primary" (click)="addEmployee()"
+            *ngIf="!isEditModalBtn && isAddModalBtn">Submit</button>
+          <button type="submit" class="btn btn-primary" (click)="updateEmployee(employeeData)"
+            *ngIf="isEditModalBtn && !isAddModalBtn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--modal end-->

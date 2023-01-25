@@ -1,0 +1,91 @@
+<app-header></app-header>
+<div class="container-lg mt-5">
+    <div class="row" id="leaveContent">
+        <br>
+        <h4><span>Leave Record </span></h4>
+        <hr> <br>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label>Select User</label>
+                    <select class="custom-select mb-3" [disabled]="leavePrivilege.leaveTypeId == 0"
+                        (ngModelChange)="onChangeUser($event)" formControlName="selectedEmpId"
+                        class="form-control w-100"
+                        [ngClass]="{ 'is-invalid': f['selectedEmpId'].touched &&  f['selectedEmpId'].errors && submitted }"
+                        required>
+                        <option value="-1">Choose user</option>
+                        <option *ngFor="let user of users" [ngValue]="user.id">
+                            {{ user.userName }}
+                        </option>
+                    </select>
+                    <div *ngIf="f['selectedEmpId'].touched && f['selectedEmpId'].errors && submitted"
+                        class="invalid-feedback">
+                        <div *ngIf="f['selectedEmpId'].errors['required']">user is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-8">
+                    <label>Leave Type</label>
+                    <select class="custom-select mb-3" [disabled]="leavePrivilege.leaveTypeId == 0"
+                        (ngModelChange)="onChangeLeaveCategory($event)" formControlName="category"
+                        class="form-control w-100"
+                        [ngClass]="{ 'is-invalid': f['category'].touched &&  f['category'].errors  && submitted}"
+                        required>
+                        <option value="-1">Choose Leave Category</option>
+                        <option *ngFor="let type of leaveTypes" [ngValue]="type.leaveTypeId">
+                            {{ type.leaveTypeName }}
+                        </option>
+                    </select>
+                    <div *ngIf="f['category'].touched && f['category'].errors" class="invalid-feedback">
+                        <div *ngIf="f['category'].errors['required']">Leave Type is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4 col-sm-3 col-12">
+                    <label for="noOfLeaves">No.Of Leaves</label>
+                    <input type="number" class="form-control" formControlName="noOfLeaves" id="noOfLeaves"
+                        placeholder="no of Leaves to be assigned"
+                        [ngClass]="{ 'is-invalid': f['noOfLeaves'].touched &&  f['noOfLeaves'].errors  && submitted} "
+                        required>
+                    <div *ngIf="f['noOfLeaves'].touched && f['noOfLeaves'].errors" class="invalid-feedback">
+                        <div *ngIf="f['noOfLeaves'].errors['required']">no of Leaves is required</div>
+                    </div>
+                </div>
+                <!-- <div class="form-group col-md-8 col-sm-3 col-12">
+                    <label for="myApprovers">Select Approvers</label>
+                        <ng-multiselect-dropdown class="form-control w-100" [settings]="settings" [data]="approvers"
+                        [(ngModel)]="selectedApprList"  formControlName="myApprovers" [ngClass]="{ 'is-invalid': f['myApprovers'].touched 
+                             &&  f['myApprovers'].errors  && submitted} "
+                              required>
+                        </ng-multiselect-dropdown>
+                    <div *ngIf="f['myApprovers'].touched && f['myApprovers'].errors" class="invalid-feedback">
+                        <div *ngIf="f['myApprovers'].errors['required']">Select atleast one approver</div>
+                    </div>
+                </div> -->
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 col-sm-3 col-12">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control w-100 h-100" formControlName="description" id="description"
+                        placeholder="description"
+                        [ngClass]="{ 'is-invalid': f['description'].touched &&  f['description'].errors && submitted}"
+                        required>
+
+                    <div *ngIf="f['description'].touched && f['description'].errors" class="invalid-feedback">
+                        <div *ngIf="f['description'].errors['required']">description is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 pt-5">
+                <div class="form-group col-md-6 col-sm-3 col-12"></div>
+                <button type="submit" class="btn btn-primary"
+                    [disabled]="form.invalid && f['selectedEmpId'].value == -1 && f['category'].value == -1">Save</button>
+                &nbsp;&nbsp;
+
+                <button type="button" class="btn btn-danger" [routerLink]="'/leave-record-report'">Cancel</button> &nbsp;&nbsp;
+                <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button> &nbsp;&nbsp;
+            </div>
+        </form>
+    </div>
+</div>

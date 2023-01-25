@@ -1,0 +1,56 @@
+<app-header></app-header>
+
+<div class="container-lg mt-5">
+    <div class="row" id="leavetypeArea">
+        <br>
+        <h4><span> Adding a New Leave Type </span></h4>
+        <hr> <br>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="leaveTypeName">Leave Type Name</label>
+                    <input type="text" class="form-control" formControlName="leaveTypeName" id="typeName"
+                        placeholder="enter leave type name"
+                        [ngClass]="{ 'is-invalid': f['leaveTypeName'].touched &&  f['leaveTypeName'].errors  && submitted} "
+                        required>
+
+                    <div *ngIf="f['leaveTypeName'].touched && f['leaveTypeName'].errors && submitted" class="invalid-feedback">
+                        <div *ngIf="f['leaveTypeName'].errors['required']">Leave Type is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="maxLimit">No.Of Leaves</label>
+                    <input type="number" class="form-control" formControlName="maxLimit" id="maxLimit"
+                        placeholder="no of Leaves to be assigned"
+                        [ngClass]="{ 'is-invalid': f['maxLimit'].touched &&  f['maxLimit'].errors  && submitted} "
+                        required>
+                    <div *ngIf="f['maxLimit'].touched && f['maxLimit'].errors" class="invalid-feedback">
+                        <div *ngIf="f['maxLimit'].errors['required']">no of Leaves is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 col-sm-3 col-12">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control w-100 h-100" formControlName="description" id="description"
+                        placeholder="description"
+                        [ngClass]="{ 'is-invalid': f['description'].touched &&  f['description'].errors && submitted}"
+                        required>
+
+                    <div *ngIf="f['description'].touched && f['description'].errors" class="invalid-feedback">
+                        <div *ngIf="f['description'].errors['required']">description is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 pt-5">
+                <div class="form-group col-md-6 col-sm-3 col-12"></div>
+                <button type="submit" class="btn btn-primary"
+                    [disabled]="form.invalid">Save</button>
+                &nbsp;&nbsp;
+
+                <button type="button" class="btn btn-danger" [routerLink]="'/leave-type-report'">Cancel</button> &nbsp;&nbsp;
+                <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button> &nbsp;&nbsp;
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<app-header></app-header>
+<div class="container-lg">
+    <div class="card">
+     <div class="card-header text-bold">    
+      <strong class="p-10 fs-4 fw-bold fst-italic p-3"> Listing Leave Type </strong>   
+       <button type="button" class="btn btn-primary text-white" (click)="addLeaveType()"
+        id="btnAddModal" *ngIf="session.userRole=='Admin'">
+        <span><i class="fa fa-plus"></i></span> Add Leave Type 
+       </button>
+       <form class="me-2" style="float:right;">
+         <input type="search" class="form-control me-2" placeholder="&#61442;  search by all category" 
+         name="search" [(ngModel)] ="enteredSearchValue"
+         autocomplete = "off" [ngModelOptions]="{standalone: true }">
+       </form>
+     </div>   
+     <div class="card-body">
+       <div class="col-12" *ngIf="leaveTypes.length > 0">
+         <table class="table table-condensed">
+           <thead>
+             <tr class="bg-primary text-white">
+               <th>Sr.No</th>
+               <th>Leave Type</th>
+               <th>No.of.Leaves</th>
+               <th>Description</th>
+               <th colspan="2" *ngIf="session.userRole=='Admin'">Action</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr *ngFor=" let i= index; let lt of leaveTypes 
+             | filter: enteredSearchValue">
+              <!-- | paginate
+             :{
+               currentPage:pagination,
+               totalItems:allUsers,
+               itemsPerPage:5
+             } 
+             | filterEmployee:FilterText"> -->
+               <td>{{i+1}}</td>
+               <td>{{lt.leaveTypeName}}</td>
+               <td>{{lt.max_limit}}</td>
+               <td>{{lt.description}}</td>
+               <td *ngIf="session.userRole == 'Admin'">
+               <button class="btn btn-outline-warning btn-sm" type="button" (click)="onEditLeaveType(lt)" *ngIf="session.userRole=='Admin'"><i class="fa fa-edit" aria-hidden="true"></i>&nbsp;Edit</button>&nbsp;
+               <button class="btn btn-outline-danger btn-sm" type="button" (click)="onDeleteLeaveType(lt)" *ngIf="session.userRole=='Admin'"> <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</button>
+               </td>
+             </tr>
+           </tbody>
+         </table>         
+       </div>
+       <div class="col-md-6 col-12" *ngIf="leaveTypes.length == 0"><p class="fs-10 fw-bold fst-italic p-3">
+         No user Privilege data Found</p></div>
+</div>
+</div>

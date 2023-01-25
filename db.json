@@ -1,0 +1,588 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "first_Name": "Mathan",
+      "last_Name": "K",
+      "gender": "Male",
+      "dOB": "1990-05-07",
+      "emp_RollNo": "UAN22001",
+      "designation": "Software Engineeer",
+      "skill": "Angular ,Html, CSS ,Bootstrap and ASP.net",
+      "certification": "OA",
+      "tot_Exp_In_Yrs": 0,
+      "bio_Brief": "hello world",
+      "temp_Addr": "34, east car street",
+      "perm_Addr": "34, east car street",
+      "email": "mathanlaksh@gmail.com",
+      "phone": 9514448337,
+      "salary": 18000,
+      "inc_Percent": 0,
+      "inc_Amt": 0,
+      "profilePhoto": {}
+    },
+    {
+      "id": 2,
+      "first_Name": "kumar",
+      "last_Name": "M",
+      "gender": "Male",
+      "dOB": "1989-01-10",
+      "emp_RollNo": "UAN22002",
+      "designation": "Network Engineer",
+      "skill": "Angular",
+      "certification": "",
+      "tot_Exp_In_Yrs": 0,
+      "bio_Brief": "hello world",
+      "temp_Addr": "34, east car street",
+      "perm_Addr": "34, east car street",
+      "email": "kumar1992@gmail.com",
+      "phone": 9952488233,
+      "salary": 18000,
+      "inc_Percent": 0,
+      "inc_Amt": 0,
+      "profilePhoto": {}
+    },
+    {
+      "id": 3,
+      "first_Name": "Arush",
+      "last_Name": "K",
+      "gender": "Male",
+      "dOB": "1990-05-14",
+      "emp_RollNo": "UAN22003",
+      "designation": "System Engineer",
+      "skill": "Angular",
+      "certification": "A DSFAF ",
+      "tot_Exp_In_Yrs": 12,
+      "bio_Brief": "hello world TEST",
+      "temp_Addr": "asaf, dsfa fads street",
+      "perm_Addr": "dfas, edfaast asdf street",
+      "email": "arush1988@gg.com",
+      "phone": 9514448225,
+      "salary": 15000,
+      "inc_Percent": 0,
+      "inc_Amt": 0,
+      "profilePhoto": {}
+    },
+    {
+      "id": 4,
+      "first_Name": "ganga raj",
+      "last_Name": "M",
+      "gender": "Male",
+      "dOB": "1989-01-18",
+      "emp_RollNo": "UAN22004",
+      "designation": "Technical Admin",
+      "skill": "kajf",
+      "certification": "kjdkfja",
+      "tot_Exp_In_Yrs": 2,
+      "bio_Brief": "af kjkj kjkjkj kj",
+      "temp_Addr": "dfkjsk ",
+      "perm_Addr": "dfkjsk ",
+      "email": "gangaraj1989@gmail.com",
+      "phone": "8015207755",
+      "salary": 17500,
+      "inc_Percent": 5,
+      "inc_Amt": 875,
+      "profilePhoto": {}
+    },
+    {
+      "id": 5,
+      "first_Name": "vignesh",
+      "last_Name": "sivan",
+      "gender": "Male",
+      "dOB": "1990-01-18",
+      "emp_RollNo": "",
+      "designation": "Manager",
+      "skill": "Managing Organizational Ethics",
+      "certification": "skd test tool",
+      "tot_Exp_In_Yrs": 5,
+      "bio_Brief": "hello this is bio brief about me",
+      "temp_Addr": "daks  D Floor, Akshra Appartments, Gandhi Nagar , Chennai",
+      "perm_Addr": "daks  D Floor, Akshra Appartments, Gandhi Nagar , Chennai",
+      "email": "vigneshsiva1990@gmail.com",
+      "phone": "9042801051",
+      "salary": 28500,
+      "inc_Percent": 5,
+      "inc_Amt": 1425,
+      "profilePhoto": {}
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "userName": "Mathan",
+      "password": "Mat1234$",
+      "emailId": "mathank@gg.com",
+      "userRole": "Admin",
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "userName": "Arun",
+      "password": "Aru1234$",
+      "emailId": "arun12@gg.com",
+      "userRole": "Admin",
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "userName": "siva",
+      "password": "siv1234$",
+      "emailId": "siva2345@gg.com",
+      "userRole": "Employee",
+      "isActive": true
+    },
+    {
+      "id": 4,
+      "userName": "kumar",
+      "password": "kumar1234$",
+      "emailId": "kumar1992@gmail.com",
+      "userRole": "Employee",
+      "isActive": true
+    },
+    {
+      "id": 5,
+      "userName": "Arun",
+      "password": "Arun1234$",
+      "emailId": "arun12@gmail.com",
+      "userRole": "Admin",
+      "isActive": false
+    },
+    {
+      "id": 6,
+      "userName": "Arush",
+      "password": "Arus1234$",
+      "emailId": "arush1988@gg.com",
+      "userRole": "Employee",
+      "isActive": false
+    },
+    {
+      "id": 7,
+      "userName": "karunakaran",
+      "password": "aAdddff$",
+      "emailId": "kk@gmail.com",
+      "userRole": "Admin",
+      "isActive": false
+    },
+    {
+      "id": 8,
+      "userName": "Kailesh",
+      "password": "Kke123$",
+      "userRole": "Employee",
+      "emailId": "kk@gmail.com",
+      "isActive": true
+    },
+    {
+      "id": 9,
+      "userName": "Akak",
+      "password": "Akak@123",
+      "userRole": "Employee",
+      "emailId": "akak@gmail.com",
+      "isActive": true
+    }
+  ],
+  "LeavePrivileges": [
+    {
+      "userId": 1,
+      "empId": 4,
+      "leaveTypeId": 3,
+      "no_of_lv_assigned": 12,
+      "description": " leave alloted to the user",
+      "leaveType": "Sick Leave (SL)",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "empId": 4,
+      "leaveTypeId": 2,
+      "no_of_lv_assigned": 12,
+      "description": "f fadsf f asd fs",
+      "leaveType": "Casual Leave (CL)",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "empId": 8,
+      "leaveTypeId": 1,
+      "no_of_lv_assigned": 12,
+      "description": "jfakj ",
+      "leaveType": "Privilege Leave (PL)",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "empId": 6,
+      "leaveTypeId": 1,
+      "no_of_lv_assigned": 12,
+      "description": "sjhj  fda fadf",
+      "leaveType": "Privilege Leave (PL)",
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "empId": 6,
+      "leaveTypeId": 1,
+      "no_of_lv_assigned": 3,
+      "description": "fdasf fads",
+      "leaveType": "Privilege Leave (PL)",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "empId": 4,
+      "leaveTypeId": 1,
+      "no_of_lv_assigned": 2,
+      "description": "Dear kumar  , when you take any leave please consider the mentioned approvers",
+      "leaveType": "Privilege Leave (PL)",
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "empId": 3,
+      "leaveTypeId": 1,
+      "no_of_lv_assigned": 1,
+      "description": "esere ereas re",
+      "leaveType": "Privilege Leave (PL)",
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "empId": 3,
+      "leaveTypeId": 2,
+      "no_of_lv_assigned": 1,
+      "description": "sdrt",
+      "leaveType": "Casual Leave (CL)",
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "empId": 3,
+      "leaveTypeId": 2,
+      "no_of_lv_assigned": 1,
+      "description": "fadf",
+      "leaveType": "Casual Leave (CL)",
+      "id": 9
+    }
+  ],
+  "LeaveTypes": [
+    {
+      "id": 1,
+      "leaveTypeId": 1,
+      "leaveTypeName": "Privilege Leave (PL)",
+      "max_limit": 1,
+      "description": "hello world test"
+    },
+    {
+      "id": 2,
+      "leaveTypeId": 2,
+      "leaveTypeName": "Casual Leave (CL)",
+      "max_limit": 1,
+      "description": "world test"
+    },
+    {
+      "id": 4,
+      "leaveTypeId": 4,
+      "leaveTypeName": "Maternity Leave (ML)",
+      "max_limit": 180,
+      "description": "ty rtr est"
+    },
+    {
+      "id": 6,
+      "leaveTypeId": 6,
+      "leaveTypeName": "Marriage Leave",
+      "max_limit": 15,
+      "description": "hello wpw"
+    },
+    {
+      "id": 7,
+      "leaveTypeId": 7,
+      "leaveTypeName": "Paternity Leave",
+      "max_limit": 12,
+      "description": "hello weoe"
+    },
+    {
+      "id": 8,
+      "leaveTypeId": 8,
+      "leaveTypeName": "Bereavement Leave",
+      "max_limit": 10,
+      "description": "f df df  e"
+    },
+    {
+      "id": 9,
+      "leaveTypeId": 9,
+      "leaveTypeName": "Loss of Pay (LOP)",
+      "max_limit": 3,
+      "description": "kjds kjd fdasf"
+    },
+    {
+      "leaveTypeId": 11,
+      "leaveTypeName": "Sick Leave (SL)",
+      "max_limit": 4,
+      "description": "we provided 4 days for Sick Leave ",
+      "id": 11
+    },
+    {
+      "leaveTypeId": 12,
+      "leaveTypeName": "nbnn",
+      "max_limit": 12,
+      "description": "hgghghg",
+      "id": 12
+    },
+    {
+      "leaveTypeId": 13,
+      "leaveTypeName": "hjhjhj",
+      "max_limit": 3,
+      "description": "hghghg",
+      "id": 13
+    },
+    {
+      "leaveTypeId": 14,
+      "leaveTypeName": "fdsaf",
+      "max_limit": 3,
+      "description": "afds",
+      "id": 14
+    }
+  ],
+  "LeaveDetails": [
+    {
+      "leaveId": 1,
+      "empId": 4,
+      "fromDate": "2023-01-05",
+      "toDate": "2023-01-05",
+      "leaveTypeId": 2,
+      "status": "Pending",
+      "remarks": "kindly allow one day CL ",
+      "no_of_leave_taken": 0,
+      "no_of_availedLeave": 1,
+      "max_limit": 1,
+      "leaveType": "Casual Leave (CL)",
+      "id": 1,
+      "lv_approver": [
+        {
+          "id": 1,
+          "userName": "Mathan"
+        },
+        {
+          "id": 5,
+          "userName": "Arun"
+        },
+        {
+          "id": 7,
+          "userName": "karunakaran"
+        }
+      ]
+    },
+    {
+      "leaveId": 3,
+      "empId": 4,
+      "fromDate": "2023-01-06",
+      "toDate": "2023-01-06",
+      "leaveTypeId": 2,
+      "status": "Pending",
+      "remarks": "hello test leave request applied",
+      "no_of_leave_taken": 0,
+      "no_of_availedLeave": 1,
+      "max_limit": 1,
+      "leaveType": "Casual Leave (CL)",
+      "id": 3,
+      "lv_approver": [
+        {
+          "id": 2,
+          "userName": "Arun"
+        },
+        {
+          "id": 7,
+          "userName": "karunakaran"
+        }
+      ]
+    },
+    {
+      "leaveId": 1,
+      "empId": 4,
+      "fromDate": "2023-01-05",
+      "toDate": "2023-01-05",
+      "leaveTypeId": 2,
+      "status": "In Progress",
+      "remarks": "approved by: Mathan sdafkdskaf j",
+      "no_of_leave_taken": 0,
+      "no_of_availedLeave": 1,
+      "max_limit": 1,
+      "leaveType": "Casual Leave (CL)",
+      "id": 4,
+      "lv_approver": [
+        {
+          "id": 1,
+          "userName": "Mathan"
+        },
+        {
+          "id": 5,
+          "userName": "Arun"
+        },
+        {
+          "id": 7,
+          "userName": "karunakaran"
+        }
+      ]
+    },
+    {
+      "leaveId": 5,
+      "empId": 4,
+      "fromDate": "2023-01-20",
+      "toDate": "2023-01-20",
+      "leaveTypeId": 2,
+      "status": "Pending",
+      "remarks": "test request",
+      "no_of_leave_taken": 0,
+      "no_of_availedLeave": 1,
+      "max_limit": 1,
+      "leaveType": "Casual Leave (CL)",
+      "id": 5,
+      "lv_approver": [
+        {
+          "id": 7,
+          "userName": "karunakaran"
+        },
+        {
+          "id": 1,
+          "userName": "Mathan"
+        }
+      ]
+    },
+    {
+      "leaveId": 6,
+      "empId": 4,
+      "fromDate": "2023-01-08",
+      "toDate": "2023-01-08",
+      "leaveTypeId": 1,
+      "leaveType": "Privilege Leave (PL)",
+      "status": "Pending",
+      "remarks": "fdsaf",
+      "no_of_leave_taken": 0,
+      "no_of_availedLeave": 1,
+      "max_limit": 1,
+      "id": 6,
+      "lv_approver": [
+        {
+          "id": 7,
+          "userName": "karunakaran"
+        },
+        {
+          "id": 5,
+          "userName": "Arun"
+        }
+      ]
+    },
+    {
+      "leaveId": 7,
+      "empId": 4,
+      "fromDate": "2023-01-12",
+      "toDate": "2023-01-12",
+      "leaveTypeId": 9,
+      "status": "Pending",
+      "remarks": "attending a  marriage wedding function .",
+      "no_of_leave_taken": 0,
+      "no_of_availedLeave": 1,
+      "max_limit": 1,
+      "leaveType": "Loss of Pay (LOP)",
+      "id": 7,
+      "lv_approver": [
+        {
+          "id": 1,
+          "userName": "Mathan"
+        },
+        {
+          "id": 2,
+          "userName": "Arun"
+        }
+      ]
+    },
+    {
+      "leaveId": 8,
+      "empId": 4,
+      "fromDate": "2023-01-08",
+      "toDate": "2023-01-08",
+      "leaveTypeId": 11,
+      "status": "Pending",
+      "remarks": "sick leave applied ",
+      "no_of_leave_taken": 0,
+      "no_of_availedLeave": 1,
+      "max_limit": 1,
+      "leaveType": "Sick Leave (SL)",
+      "id": 8,
+      "lv_approver": []
+    }
+  ],
+  "HolidayDetails": [
+    {
+      "id": 1,
+      "holidayId": 1,
+      "holidayName": "Republic Day",
+      "holidayDt": "2023-01-26"
+    },
+    {
+      "id": 2,
+      "holidayId": 2,
+      "holidayName": "Mahavir Jayanti",
+      "holidayDt": "2023-04-04"
+    },
+    {
+      "id": 3,
+      "holidayId": 3,
+      "holidayName": "Bakrid",
+      "holidayDt": "2023-06-29"
+    },
+    {
+      "id": 4,
+      "holidayId": 3,
+      "holidayName": "Muharam",
+      "holidayDt": "2023-07-29"
+    },
+    {
+      "id": 5,
+      "holidayId": 5,
+      "holidayName": "Independence Day",
+      "holidayDt": "2023-08-15"
+    },
+    {
+      "id": 6,
+      "holidayId": 6,
+      "holidayName": "Janmashtami",
+      "holidayDt": "2023-09-07"
+    },
+    {
+      "id": 6,
+      "holidayId": 7,
+      "holidayName": "Milad-un-Nabi",
+      "holidayDt": "2023-09-28"
+    },
+    {
+      "id": 8,
+      "holidayId": 8,
+      "holidayName": "mahatma gandhi's birthday",
+      "holidayDt": "2023-10-02"
+    },
+    {
+      "id": 9,
+      "holidayId": 9,
+      "holidayName": "Dussehra",
+      "holidayDt": "2023-10-24"
+    },
+    {
+      "id": 10,
+      "holidayId": 10,
+      "holidayName": "Diwali",
+      "holidayDt": "2023-11-12"
+    },
+    {
+      "id": 11,
+      "holidayId": 11,
+      "holidayName": "Guru Nanak's Birthday",
+      "holidayDt": "2023-11-27"
+    },
+    {
+      "id": 12,
+      "holidayId": 12,
+      "holidayName": "Christmas Day",
+      "holidayDt": "2023-12-25"
+    }
+  ]
+}

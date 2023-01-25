@@ -1,0 +1,91 @@
+<div class="navbar navbar-expand navbar-dark bg-dark px-2">
+    <!-- <div class="side-nav-button p-2 me-2 text-light" (click)="sideNavToggle()">
+        <i class="fas fa-solid fa-bars"></i>
+    </div> -->
+    <a href="#" class="navbar-brand px-4">EMS</a>
+    <div class="navbar-collapse">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item" *ngIf="session.userRole == 'Admin'" routerLinkActive="active">
+                <a class="nav-link" routerLink="/admin-dashboard" href="#" role="button" data-bs-toggle="dropdown">
+                    DashBoard
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="session.userRole == 'Employee'" routerLinkActive="active">
+                <a class="nav-link" routerLink="/employee-dashboard" href="#" role="button" data-bs-toggle="dropdown">
+                    DashBoard
+                </a>
+            </li>
+            <li class="nav-item dropdown" *ngIf="session.userRole == 'Admin'" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Add New
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li routerLinkActive="active"><a href="#" class="dropdown-item" routerLink="/employee-admin">Add New User</a></li>
+                    <li routerLinkActive="active"><a href="#" class="dropdown-item" routerLink="/leave-type">New Leave Type</a></li>
+                    <li routerLinkActive="active"><a href="#" class="dropdown-item" routerLink="/leave-privilege">New Leave Record</a></li>
+                </ul>
+
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Reports
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li routerLinkActive="active"><a href="#" class="dropdown-item" routerLink="/leave-type-report">Leave Type Record Report</a></li>
+                    <li routerLinkActive="active"><a href="#" class="dropdown-item"  routerLink="/leave-record-report">Leave Record Report</a></li>
+                    <li routerLinkActive="active"><a href="#" class="dropdown-item"  routerLink="/leave-details">Leave Details Report</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown" *ngIf="session.userRole == 'Admin'" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Employees
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li routerLinkActive="active"><a href="#" class="dropdown-item" routerLink="/employee-admin">Manage employees</a></li>
+                    <li routerLinkActive="active"><a href="#" class="dropdown-item">Manage Leaves</a></li>
+                    <li routerLinkActive="active"><a href="#" class="dropdown-item">Manage Tours</a></li>
+                </ul>
+
+            </li>
+            <li class="nav-item dropdown" *ngIf="session.userRole == 'Employee'" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Manage Leave
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" routerLinkActive="active">
+                    <li><a href="#" class="dropdown-item" routerLink="/leave-apply">Leave Apply</a></li>
+                    <li><a href="#" class="dropdown-item" routerLink="/leave-details">View Leave</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown" *ngIf="session.userRole == 'Employee'" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Manage Tours
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a href="#" class="dropdown-item">Apply Tour</a></li>
+                    <li><a href="#" class="dropdown-item">View Tour</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <p class="d-flex me-5 fs-8 fw-bold fst-italic text-white"> {{WelcomeMsg}}</p>
+    </div>
+    <form class="d-flex">
+        <input type="search" class="form-control me-2" placeholder="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+    </form>
+    <div class="profile-logo dropstart">
+        <button class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">
+            User
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            <li *ngIf="session == null"><a href="#" class="dropdown-item" routerLink="/signUp">Sign Up</a></li>
+            <li *ngIf="session == null"><a href="#" class="dropdown-item" routerLink="/login">Login In</a></li>
+            <li *ngIf="session.userRole == 'Employee'"> <a href="#" class="dropdown-item" routerLink="/employee">Your
+                    Profile</a></li>
+            <li *ngIf="session.userRole == 'Admin'"><a href="#" class="dropdown-item" routerLink="/employee-admin">Your
+                    Profile</a></li>
+            <li *ngIf="session !== null"><a href="#" class="dropdown-item" (click)="onLogOut()">Logout</a></li>
+        </ul>
+    </div>
+</div>

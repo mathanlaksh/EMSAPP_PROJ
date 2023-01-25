@@ -1,0 +1,13 @@
+.container-lg{
+    margin-top:100px;
+}
+
+
+.modal-dialog{
+    margin-top:50px;
+}
+
+#btnAddModal{
+    float:right;
+    position:relative
+}
