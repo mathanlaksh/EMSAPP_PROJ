@@ -12,7 +12,6 @@
             [(ngModel)] = "userData.userName" [ngModelOptions]="{standalone: true }" #uName="ngModel" 
              [ngClass] = "{'is-invalid':fo.submitted && uName.invalid,'is-valid':fo.submitted && uName.valid}" 
              required>
-             <p>hello</p>
            <div class="invalid-feedback">
             <div *ngIf="uName.errors?.['required']">User name is requird</div>
            </div>
