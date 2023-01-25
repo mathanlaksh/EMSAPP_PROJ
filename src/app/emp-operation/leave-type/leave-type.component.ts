@@ -57,6 +57,7 @@ export class LeaveTypeComponent implements OnInit, AfterViewInit, OnDestroy {
         // this.form.get('description')?.setValue(obs.description);
         // this.form.get('maxLimit')?.setValue(obs.max_limit);
         setTimeout(()=>{
+          console.log('timeout fired');
           this.form.controls['leaveTypeName'].setValue(obs.leaveTypeName);
           this.form.controls['description'].setValue(obs.description);
           this.form.controls['maxLimit'].setValue(obs.max_limit);
@@ -75,11 +76,8 @@ this.cf.detectChanges();
     })
   }
   ngAfterViewInit() { 
-    //this.editTypeSubscription =   
-    
-    console.log('subscriptin data');
+    //this.editTypeSubscription =       
       console.log('viewChild', this.editRequest);
-
 
   }
 
