@@ -25,7 +25,6 @@ export class LeaveTypeComponent implements OnInit, AfterViewInit, OnDestroy {
   leaveTypes: LeaveType[] = [];
   submitted: boolean = false;
   session: any;
-  @ViewChild(LeaveTypeReportComponent) editRequest: any;
 //private editTypeSubscription: Subscription = new Subscription();
   constructor(private toast: ToastrService,
     private formbuilder: FormBuilder,
@@ -34,7 +33,6 @@ export class LeaveTypeComponent implements OnInit, AfterViewInit, OnDestroy {
     private router: Router,
     private cf: ChangeDetectorRef
     ) {
-//private cDRef:ChangeDetectorRef
 
   }
 
@@ -76,8 +74,6 @@ this.cf.detectChanges();
     })
   }
   ngAfterViewInit() { 
-    //this.editTypeSubscription =       
-      console.log('viewChild', this.editRequest);
 
   }
 
